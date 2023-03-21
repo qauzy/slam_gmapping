@@ -394,6 +394,7 @@ SlamGMapping::getOdomPose(GMapping::OrientedPoint& gmap_pose, const ros::Time& t
     ROS_WARN("Failed to compute odom pose, skipping scan (%s)", e.what());
     return false;
   }
+  //通过转化得到OrientedPoint格式的里程计坐标系下的位姿
   double yaw = tf::getYaw(odom_pose.getRotation());
 
   gmap_pose = GMapping::OrientedPoint(odom_pose.getOrigin().x(),
